@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import retrofit2.Call
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,11 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         apiKey = getString(R.string.key)
-        val retrofit : Retrofit = Retrofit.Builder()
-                .baseUrl("https://api.propublica.org/")
-                .build()
-
-        val service : ProPublicaService = retrofit.create(ProPublicaService::class.java)
-        val member: Call<Meta> = service.getCongressMembers("senate", apiKey)
+        val restApi = RestApi()
     }
 }
