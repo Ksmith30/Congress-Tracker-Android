@@ -7,17 +7,17 @@ import retrofit2.Retrofit
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    val apiKey : String = resources.getString(R.string.key)
+    private var apiKey: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        apiKey = getString(R.string.key)
         val retrofit : Retrofit = Retrofit.Builder()
-                .baseUrl("https://api.propublica.org/congress/v1/115/")
+                .baseUrl("https://api.propublica.org/")
                 .build()
 
         val service : ProPublicaService = retrofit.create(ProPublicaService::class.java)
-        val member: Call<List<CongressMember>> = service.getCongressMembers("senate", apiKey)
+        val member: Call<Meta> = service.getCongressMembers("senate", apiKey)
     }
 }

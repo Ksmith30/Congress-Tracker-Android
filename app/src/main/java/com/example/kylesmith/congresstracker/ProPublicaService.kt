@@ -7,8 +7,7 @@ import retrofit2.http.Header
 import retrofit2.http.Path
 
 interface ProPublicaService{
-    @GET("{chamber}/members.json")
+    @GET("congress/v1/115/{chamber}/members.json")
     fun getCongressMembers(@Path("chamber") chamber: String,
-                           @Header("X-API-Key") key: String) : Call<List<CongressMember>>
-
+                           @Header("X-API-Key: ") key: String) : Call<Meta>
 }
