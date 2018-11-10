@@ -1,16 +1,12 @@
 package com.example.kylesmith.congresstracker
 
-import java.util.*
-
-class PropublicaDataResponse(val meta: Meta)
-
-class Meta(
+data class Meta(
         val status: String?,
         val copyright: String?,
         val results: Array<CongressData>
 )
 
-class CongressData (
+data class CongressData (
         val congress: String?,
         val chamber: String?,
         val num_results: Int?,
@@ -18,7 +14,7 @@ class CongressData (
         val members: Array<CongressMember>
 )
 
-class CongressMember(
+data class CongressMember(
         val id: String?,
         val title: String?,
         val short_title: String?,
